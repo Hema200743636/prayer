@@ -130,7 +130,7 @@ function updateVerse(){
   document.getElementById('verseText').textContent=v[0];
   document.getElementById('verseRef').textContent=v[1];
 }
-updateVerse();
+updateVerse();setInterval(updateVerse,60000);
 function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
 let fontSize=parseInt(load('fontSize'))||18;
