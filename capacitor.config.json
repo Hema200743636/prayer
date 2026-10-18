@@ -1,0 +1,9 @@
+{
+  "appId": "org.shobra.nightprayer",
+  "appName": "صلاة النوم",
+  "webDir": "www",
+  "backgroundColor": "#082b62",
+  "android": {
+    "allowMixedContent": false
+  }
+}
