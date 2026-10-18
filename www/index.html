@@ -124,6 +124,7 @@ const verses=[
 ];
 function updateVerse(){
   const d=new Date();
+  if(d.getHours()>=21)d.setDate(d.getDate()+1);
   const day=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
   const v=verses[day%verses.length];
   document.getElementById('verseText').textContent=v[0];
