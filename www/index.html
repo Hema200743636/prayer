@@ -25,6 +25,9 @@ button,.nav a{font:inherit;cursor:pointer;border:1px solid var(--gold);border-ra
 button:hover,.nav a:hover{background:#fff0c5}
 .verse{background:linear-gradient(135deg,#082b62,#15539b);color:#fff;border:2px solid var(--gold);border-radius:18px;padding:18px;text-align:center;margin:0 auto 22px;box-shadow:0 8px 24px #0b2d5c20}
 .verse h2{margin:0 0 8px;color:#ffdc77;font-size:1.1rem}.verse p{font-size:1.2rem;margin:4px}.verse small{color:#e9e1cd}
+.copybtn{margin-top:12px;background:transparent;color:#ffdc77;border:1px solid #ffdc77;border-radius:10px;padding:8px 18px;font:inherit;font-size:.95rem;cursor:pointer}
+.copybtn:active{transform:scale(.97)}
+.copybtn:hover,.copybtn:focus,body.dark .copybtn,body.dark .copybtn:hover{background:#ffffff1f;color:#ffdc77;border-color:#ffdc77}
 .nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:24px}
 section.prayer{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px clamp(15px,4vw,32px);margin:16px 0;box-shadow:0 4px 16px #182b4c0a;scroll-margin-top:15px}
 h2.section-title{color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-top:0;font-size:1.45rem}
@@ -33,7 +36,7 @@ footer{text-align:center;color:#536078;padding:24px;font-size:.9rem}
 body.dark{--cream:#17233b;--ink:#f2f4fa;--card:#1d2b43;--line:#6f603c;background:#101a2b;color:var(--ink)}
 body.dark .nav{background:#1d2b43}body.dark button,body.dark .nav a{background:#263a59;color:#fff}body.dark section.prayer{box-shadow:none}
 @media(max-width:600px){body{font-size:16px}.wrap{width:94%;margin:15px auto}section.prayer{padding:17px 14px}.nav a{font-size:.9rem;padding:7px 10px}}
-@media print{header{background:#fff;color:#000;border-bottom:2px solid #000}.logo{width:120px}.toolbar,.nav{display:none}body{background:#fff;color:#000;font-size:12pt}section.prayer{box-shadow:none;break-inside:avoid;border:1px solid #bbb}.verse{background:#fff;color:#000;box-shadow:none}.verse h2{color:#000}}
+@media print{.copybtn{display:none}header{background:#fff;color:#000;border-bottom:2px solid #000}.logo{width:120px}.toolbar,.nav{display:none}body{background:#fff;color:#000;font-size:12pt}section.prayer{box-shadow:none;break-inside:avoid;border:1px solid #bbb}.verse{background:#fff;color:#000;box-shadow:none}.verse h2{color:#000}}
 
 body{padding-bottom:env(safe-area-inset-bottom);-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 header{padding-top:calc(22px + env(safe-area-inset-top))}
@@ -57,7 +60,7 @@ button:active,.nav a:active{transform:scale(.97)}
     <button id="darkToggle" type="button">الوضع الليلي</button>
   </div>
   <div class="verse" aria-live="polite">
-    <h2>آية اليوم</h2><p id="verseText"></p><small id="verseRef"></small>
+    <h2>آية اليوم</h2><p id="verseText"></p><small id="verseRef"></small><div><button id="copyVerse" type="button" class="copybtn">نسخ الآية</button></div>
   </div>
   <nav class="nav" aria-label="فهرس الصلاة">
     <a href="#lord">الصلاة الربانية</a><a href="#thanksgiving">صلاة الشكر</a><a href="#psalm50">المزمور الخمسون</a>
@@ -137,6 +140,17 @@ function updateVerse(){
   document.getElementById('verseRef').textContent=v[1];
 }
 updateVerse();
+function copyText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText){return navigator.clipboard.writeText(t)}
+  return new Promise(function(ok,no){try{var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();a.setSelectionRange(0,99999);var r=document.execCommand('copy');a.remove();r?ok():no()}catch(e){no(e)}});
+}
+document.getElementById('copyVerse').addEventListener('click',function(){
+  var b=this,t=document.getElementById('verseText').textContent+' ('+document.getElementById('verseRef').textContent+')';
+  function say(m){b.textContent=m;clearTimeout(say.h);say.h=setTimeout(function(){b.textContent='نسخ الآية'},1800)}
+  copyText(t).then(function(){say('تم النسخ')},function(){
+    return new Promise(function(ok,no){try{var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var r=document.execCommand('copy');a.remove();r?ok():no()}catch(e){no(e)}}).then(function(){say('تم النسخ')},function(){say('تعذر النسخ')});
+  });
+});
 function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
 let fontSize=parseInt(load('fontSize'))||18;
