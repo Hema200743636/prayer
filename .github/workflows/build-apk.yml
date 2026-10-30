@@ -1,11 +1,16 @@
-name: Build APK
+name: Build APK and web app
 
 on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build:
+  apk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,14 +24,19 @@ jobs:
           distribution: temurin
           java-version: 21
 
+      - name: Use the same signing key every time
+        run: |
+          mkdir -p ~/.android
+          cp debug.keystore ~/.android/debug.keystore
+
       - name: Install dependencies
         run: npm install
 
       - name: Create Android project
         run: npx cap add android
 
-      - name: Generate app icons from assets/icon-only.png
-        run: npx capacitor-assets generate --android --iconBackgroundColor '#082b62' --iconBackgroundColorDark '#082b62'
+      - name: Generate app icons
+        run: npx capacitor-assets generate --android --iconBackgroundColor '#0b2a5b' --iconBackgroundColorDark '#0b2a5b'
 
       - name: Copy web files into the app
         run: npx cap sync android
@@ -39,3 +49,17 @@ jobs:
         with:
           name: night-prayer-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+
+  web:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: www
+      - id: deployment
+        uses: actions/deploy-pages@v4
