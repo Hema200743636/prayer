@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#092b61">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="صلاة النوم">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>صلاة الساعة الثانية عشرة | صلاة النوم</title>
+<style>
+:root{--navy:#082b62;--blue:#104a91;--gold:#d7a52b;--cream:#fffaf0;--ink:#17233b;--card:#fff;--line:#ead9aa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f7f3e8,#eef3fa);color:var(--ink);font-family:"Tahoma","Arial",sans-serif;line-height:2;font-size:18px}
+header{background:var(--navy);color:#fff;text-align:center;padding:22px 16px 28px;border-bottom:6px solid var(--gold)}
+.logo{display:block;width:min(300px,76vw);height:auto;aspect-ratio:1;object-fit:contain;margin:0 auto 12px;border:3px solid var(--gold);border-radius:24px;background:#6a7895;box-shadow:0 4px 18px #0003}
+header h1{font-size:clamp(1.35rem,4vw,2.1rem);margin:8px 0;color:#ffdf7a}
+header p{margin:0;color:#f5f0e4}
+.wrap{width:min(1100px,94%);margin:24px auto}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:18px}
+button,.nav a{font:inherit;cursor:pointer;border:1px solid var(--gold);border-radius:12px;padding:9px 14px;background:#fff;color:var(--navy);text-decoration:none}
+button:hover,.nav a:hover{background:#fff0c5}
+.verse{background:linear-gradient(135deg,#082b62,#15539b);color:#fff;border:2px solid var(--gold);border-radius:18px;padding:18px;text-align:center;margin:0 auto 22px;box-shadow:0 8px 24px #0b2d5c20}
+.verse h2{margin:0 0 8px;color:#ffdc77;font-size:1.1rem}.verse p{font-size:1.2rem;margin:4px}.verse small{color:#e9e1cd}
+.copybtn{margin-top:12px;background:transparent;color:#ffdc77;border:1px solid #ffdc77;border-radius:10px;padding:8px 18px;font:inherit;font-size:.95rem;cursor:pointer}
+.copybtn:active{transform:scale(.97)}
+.copybtn:hover,.copybtn:focus,body.dark .copybtn,body.dark .copybtn:hover{background:#ffffff1f;color:#ffdc77;border-color:#ffdc77}
+.nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:24px}
+section.prayer{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px clamp(15px,4vw,32px);margin:16px 0;box-shadow:0 4px 16px #182b4c0a;scroll-margin-top:15px}
+h2.section-title{color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-top:0;font-size:1.45rem}
+h3{color:#875f08;margin-bottom:5px}.prayer p{white-space:pre-line;margin:10px 0}
+footer{text-align:center;color:#536078;padding:24px;font-size:.9rem}
+body.dark{--cream:#17233b;--ink:#f2f4fa;--card:#1d2b43;--line:#6f603c;background:#101a2b;color:var(--ink)}
+body.dark .nav{background:#1d2b43}body.dark button,body.dark .nav a{background:#263a59;color:#fff}body.dark section.prayer{box-shadow:none}
+@media(max-width:600px){body{font-size:16px}.wrap{width:94%;margin:15px auto}section.prayer{padding:17px 14px}.nav a{font-size:.9rem;padding:7px 10px}}
+@media print{.copybtn{display:none}header{background:#fff;color:#000;border-bottom:2px solid #000}.logo{width:120px}.toolbar,.nav{display:none}body{background:#fff;color:#000;font-size:12pt}section.prayer{box-shadow:none;break-inside:avoid;border:1px solid #bbb}.verse{background:#fff;color:#000;box-shadow:none}.verse h2{color:#000}}
+
+body{padding-bottom:env(safe-area-inset-bottom);-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+header{padding-top:calc(22px + env(safe-area-inset-top))}
+.toolbar{position:sticky;top:0;z-index:5;background:#f7f3e8ee;backdrop-filter:blur(6px);padding:8px 0;margin-top:-8px}
+body.dark .toolbar{background:#101a2bee}
+#top{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom));left:16px;width:46px;height:46px;border-radius:50%;padding:0;font-size:1.3rem;line-height:1;display:none;box-shadow:0 4px 14px #0004;z-index:6}
+#top.show{display:block}
+button:active,.nav a:active{transform:scale(.97)}
+</style>
+</head>
+<body>
+<header>
+  <img class="logo" src="logo.png" alt="شعار مطرانية شبرا الخيمة وتوابعها - تيم مارمينا والبابا كيرلس">
+  <h1>صلاة الساعة الثانية عشرة</h1>
+  <p>صلاة النوم • تيم مارمينا والبابا كيرلس</p>
+  <p>مطرانية شبرا الخيمة وتوابعها – مركز تدريب خدام الشباب</p>
+</header>
+<main class="wrap">
+  <div class="toolbar">
+    <button id="smaller" type="button">تصغير الخط −</button><button id="larger" type="button">تكبير الخط +</button>
+    <button id="darkToggle" type="button">الوضع الليلي</button>
+  </div>
+  <div class="verse" aria-live="polite">
+    <h2>آية اليوم</h2><p id="verseText"></p><small id="verseRef"></small><div><button id="copyVerse" type="button" class="copybtn">نسخ الآية</button></div>
+  </div>
+  <nav class="nav" aria-label="فهرس الصلاة">
+    <a href="#lord">الصلاة الربانية</a><a href="#thanksgiving">صلاة الشكر</a><a href="#psalm50">المزمور الخمسون</a>
+    <a href="#psalms">المزامير</a><a href="#gospel">الإنجيل</a><a href="#pieces">القطع</a><a href="#analysis">التحليل</a><a href="#petition">الطلبة</a>
+  </nav>
+
+  <section class="prayer" id="lord"><h2 class="section-title">الصلاة الربانية</h2>
+  <p>بسم الآب والابن والروح القدس، الإله الواحد. آمين.</p>
+  <p>(كيريي إليسون) يا رب ارحم. يا رب ارحم. يا رب بارك. آمين.</p>
+  <p>المجد للآب والابن والروح القدس، الآن وكل أوان وإلى دهر الدهور. آمين.</p>
+  <p>اللهم اجعلنا مستحقين أن نقول بشكر:</p>
+  <p>أبانا الذي في السماوات، ليتقدس اسمك. ليأت ملكوتك. لتكن مشيئتك كما في السماء كذلك على الأرض. خبزنا الذي للغد أعطنا اليوم. واغفر لنا ذنوبنا كما نغفر نحن أيضًا للمذنبين إلينا. ولا تدخلنا في تجربة، لكن نجنا من الشرير. بالمسيح يسوع ربنا، لأن لك الملك والقوة والمجد إلى الأبد. آمين.</p></section>
+
+  <section class="prayer" id="thanksgiving"><h2 class="section-title">صلاة الشكر</h2>
+  <p>فلنشكر صانع الخيرات، الرحوم الله أبا ربنا وإلهنا ومخلصنا يسوع المسيح، لأنه سترنا وأعاننا وحفظنا وقبلنا إليه وأشفق علينا وعضدنا وأتى بنا إلى هذه الساعة. هو أيضًا فلنسأله أن يحفظنا في هذا اليوم المقدس وكل أيام حياتنا بكل سلام، الضابط الكل الرب إلهنا.</p>
+  <p>أيها السيد الرب الإله ضابط الكل، أبو ربنا وإلهنا ومخلصنا يسوع المسيح، نشكرك على كل حال، ومن أجل كل حال، وفي كل حال، لأنك سترتنا وأعنتنا وحفظتنا وقبلتنا إليك وأشفقت علينا وعضدتنا وأتيت بنا إلى هذه الساعة.</p>
+  <p>من أجل هذا نسأل ونطلب من صلاحك يا محب البشر، امنحنا أن نكمل هذا اليوم المقدس وكل أيام حياتنا بكل سلام مع خوفك. كل حسد، وكل تجربة، وكل فعل الشيطان، ومؤامرة الناس الأشرار، وقيام الأعداء الخفيين والظاهرين، انزعها عنا وعن سائر شعبك وعن موضعك المقدس هذا.</p>
+  <p>أما الصالحات والنافعـات فارزقنا إياها، لأنك أنت الذي أعطيتنا السلطان أن ندوس الحيات والعقارب وكل قوة العدو. ولا تدخلنا في تجربة، لكن نجنا من الشرير، بالنعمة والرأفات ومحبة البشر اللواتي لابنك الوحيد ربنا وإلهنا ومخلصنا يسوع المسيح. هذا الذي من قبله المجد والإكرام والعزة والسجود تليق بك معه ومع الروح القدس المحيي المساوي لك، الآن وكل أوان وإلى دهر الدهور. آمين.</p></section>
+
+  <section class="prayer" id="psalm50"><h2 class="section-title">المزمور الخمسون</h2>
+  <p>ارحمني يا الله كعظيم رحمتك، ومثل كثرة رأفتك تمحو إثمي. تغسلني كثيرًا من إثمي، ومن خطيتي تطهرني. لأني عارف بإثمي، وخطيتي أمامي في كل حين. لك وحدك أخطأت، والشر قدامك صنعت، لكي تتبرر في أقوالك وتغلب إذا حاكمت. لأني هأنذا بالآثام حبل بي، وبالخطايا ولدتني أمي. لأنك هكذا قد أحببت الحق، إذ أوضحت لي غوامض حكمتك ومستوراتها.</p>
+  <p>تنضح علي بزوفاك فأطهر، تغسلني فأبيض أكثر من الثلج. تسمعني سرورًا وفرحًا، فتبتهج عظامي المنسحقة. اصرف وجهك عن خطاياي، وامح كل آثامي. قلبًا نقيًا اخلق فيّ يا الله، وروحًا مستقيمًا جدده في أحشائي. لا تطرحني من قدام وجهك، وروحك القدوس لا تنزعه مني.</p>
+  <p>امنحني بهجة خلاصك، وبروح مدبر عضدني، فأعلم الأثمة طرقك والمنافقون إليك يرجعون. نجني من الدماء يا الله إله خلاصي، فيبتهج لساني ببرك. يا رب افتح شفتي فيخبر فمي بتسبيحك. لأنك لو أثرت الذبيحة لكنت الآن أعطي، ولكنك لا تسر بالمحرقات. فالذبيحة لله روح منسحق، القلب المنكسر والمتواضع لا يرذله الله.</p>
+  <p>أنعم يا رب بمسرتك على صهيون، ولتبن أسوار أورشليم. حينئذ تسر بذبائح البر قربانًا ومحرقات، ويقربون على مذابحك العجول. هلليلويا.</p></section>
+
+  <section class="prayer" id="beginning"><h2 class="section-title">بدء الصلاة</h2><p>تسبحة النوم من اليوم المبارك أقدمها للمسيح ملكي وإلهي، وأرجوه أن يغفر لي خطاياي.</p></section>
+
+  <section class="prayer" id="psalms"><h2 class="section-title">المزامير</h2>
+  <h3>مزمور 129: من الأعماق صرخت إليك يا رب (†)</h3>
+  <p>من الأعماق صرخت إليك يا رب. يا رب اسمع صوتي، لتكن أذناك مصغيتين إلى صوت تضرعي. إن كنت للآثام راصدًا يا رب، يا رب من يثبت؟ لأن من عندك المغفرة. من أجل اسمك صبرت لك يا رب، تمسكت نفسي بناموسك. انتظرت نفسي الرب من محرس الصبح إلى الليل. من محرس الصبح فلينتظر إسرائيل الرب، لأن الرحمة من عند الرب، عظيم هو خلاصه، وهو يفتدي إسرائيل من كل آثامه. هلليلويا.</p>
+  <h3>مزمور 130: يا رب لم يرتفع قلبي</h3>
+  <p>يا رب لم يرتفع قلبي، ولم تستعل عيناي، ولم أسلك في العظائم ولا في العجائب التي هي أعلى مني. أما إن كنت لم أتضع، لكن رفعت صوتي مثل الفطيم من اللبن على أمه، كذلك تكون علي نفسي. فليتكل إسرائيل على الرب من الآن وإلى الأبد. هلليلويا.</p>
+  <h3>مزمور 147: سبحي الرب يا أورشليم (†)</h3>
+  <p>سبحي الرب يا أورشليم، سبحي إلهك يا صهيون، لأنه قد قوى مغاليق أبوابك، وبارك بنيك فيك. الذي جعل تخومك في سلام، ويشبعك من شحم الحنطة. الذي يرسل كلمته إلى الأرض، فيسرع قوله عاجلًا جدًا. المعطي الثلج كالصوف، المذري الضباب كالرماد. ويلقي الجليد مثل الفتات، قدام وجه برده من يقوم؟ يرسل كلمته فتذيبه، تهب ريحه فتسيل المياه. المخبر كلمته ليعقوب، وفرائضه وأحكامه لإسرائيل. لم يصنع هكذا بكل الأمم، وأحكامه لم يوضحها لهم. هلليلويا.</p></section>
+
+  <section class="prayer" id="gospel"><h2 class="section-title">الإنجيل (لوقا 2: 25–32)</h2>
+  <p><strong>ذوكصاصي أو ثيؤس إيمون، فصل من بشارة معلمنا مار لوقا البشير والتلميذ الطاهر، بركاته علينا. آمين.</strong></p>
+  <p>وإذا إنسان كان بأورشليم اسمه سمعان، وهذا الإنسان كان بارًا تقيًا، متوقعًا تعزية إسرائيل، والروح القدس كان عليه. وكان قد أُعلم بوحي من الروح القدس أنه لا يرى الموت قبل أن يعاين المسيح الرب. فأقبل بالروح إلى الهيكل، ولما دخل بالطفل يسوع أبواه ليصنعا عنه كما يجب في الناموس، حمله سمعان على ذراعيه وبارك الله قائلًا: الآن يا سيدي تطلق عبدك بسلام حسب قولك، لأن عيني قد أبصرتا خلاصك الذي أعددته أمام جميع الشعوب، نورًا تجلى للأمم ومجدًا لشعبك إسرائيل. والمجد لله دائمًا.</p>
+  <p>تين أووأوشت إمموك أوبيخرستوس نيم بيك يوت إن أغاثوس نيم بي إبنفما إثؤواب جي أك (إي) أكسوتي ممون ناي نان.</p>
+  <p>نسجد لك أيها المسيح مع أبيك الصالح والروح القدس، لأنك أتيت وخلصتنا. ارحمنا.</p></section>
+
+  <section class="prayer" id="pieces"><h2 class="section-title">القطع</h2>
+  <h3>القطعة الأولى</h3><p>هوذا أنا عتيد أن أقف أمام الديان العادل مرعوبًا ومرتعبًا من كثرة ذنوبي، لأن العمر المنقضي في الملاهي يستوجب الدينونة. لكن توبي يا نفسي ما دمت في الأرض ساكنة، لأن التراب في القبر لا يسبح، وليس في الموتى من يذكر ولا في الجحيم من يشكر. بل انهضي من رقاد الكسل وتضرعي إلى المخلص بالتوبة قائلة: اللهم ارحمني وخلصني. (ذوكصابترى كي إيو كي أجيو إبنفماتي)</p>
+  <h3>القطعة الثانية</h3><p>لو كان العمر ثابتًا وهذا العالم مؤبدًا لكان لك يا نفسي حجة واضحة. لكن إذا انكشفت أفعالك الرديئة وشرورك القبيحة أمام الديان العادل، فأي جواب تجيبين وأنت على سرير الخطايا منطرحة وفي إخضاع الجسد متهاونة؟ أيها المسيح إلهنا، لكرسي حكمك المرهوب أفزع، ولمجلس دينونتك أخشع، ولنور شعاع لاهوتك أجزع. أنا الشقي المتدنس الراقد على فراشي، المتهاون في حياتي. لكني أتخذ صورة العشار قارعًا صدري قائلًا: اللهم اغفر لي فإني خاطئ. (كي نين كي أ إي كي إسطوس إي أوناسطون إي أونون آمين)</p>
+  <h3>القطعة الثالثة</h3><p>أيتها العذراء الطاهرة، اسبلي ظلك السريع المعونة على عبدك، وأبعدي أمواج الأفكار الرديئة عني، وأنهضي نفسي المريضة للصلاة والسهر، لأنها استغرقت في سبات عميق، فإنك أم قادرة رحيمة معينة، والدة ينبوع الحياة، ملكي وإلهي يسوع المسيح رجائي.</p></section>
+
+  <section class="prayer" id="analysis"><h2 class="section-title">التحليل</h2>
+  <p>يا رب جميع ما أخطأنا به إليك في هذا اليوم، إن كان بالفعل أو بالقول أو بالفكر أو بجميع الحواس، فاصفح واغفر لنا من أجل اسمك القدوس كصالح ومحب للبشر. وأنعم علينا اللهم بليلة سالمة، وبهذا النوم طاهرًا من كل قلق، وأرسل لنا ملاك السلامة ليحرسنا من كل شر، ومن كل ضربة، ومن كل تجربة العدو. بالنعمة والرأفات ومحبة البشر اللواتي لابنك الوحيد ربنا وإلهنا ومخلصنا يسوع المسيح. هذا الذي من قبله يليق بك معه المجد والكرامة والعزة، مع الروح القدس المحيي المساوي لك الآن وكل أوان وإلى دهر الدهور. آمين.</p></section>
+
+  <section class="prayer" id="petition"><h2 class="section-title">طلبة تقال آخر كل ساعة</h2>
+  <p>ارحمنا يا الله ثم ارحمنا، يا من في كل وقت وكل ساعة، في السماء وعلى الأرض، مسجود له وممجد، المسيح إلهنا الصالح، الطويل الروح الكثير الرحمة الجزيل التحَنن، الذي يحب الصديقين ويرحم الخطاة الذين أولهم أنا، الذي لا يشاء موت الخاطئ مثل ما يرجع ويحيا.</p>
+  <p>الداعي الكل إلى الخلاص لأجل الموعد بالخيرات المنتظرة. يا رب اقبل منا في هذه الساعة وكل ساعة طلباتنا. سهل حياتنا، وارشدنا إلى العمل بوصاياك. قدس أرواحنا، طهر أجسامنا، قوم أفكارنا، نق نياتنا، اشف أمراضنا واغفر خطايانا. ونجنا من كل حزن رديء ووجع قلب. أحطنا بملائكتك القديسين لكي نكون بمعسكرهم محفوظين ومرشدين، لنصل إلى اتحاد الإيمان وإلى معرفة مجدك غير المحسوس وغير المحدود، فإنك مبارك إلى الأبد. آمين.</p></section>
+
+  <section class="prayer"><h2 class="section-title">الصلاة الربانية الختامية</h2>
+  <p>اللهم اجعلنا مستحقين أن نقول بشكر:</p><p>أبانا الذي في السماوات، ليتقدس اسمك. ليأت ملكوتك. لتكن مشيئتك كما في السماء كذلك على الأرض. خبزنا الذي للغد أعطنا اليوم. واغفر لنا ذنوبنا كما نغفر نحن أيضًا للمذنبين إلينا. ولا تدخلنا في تجربة، لكن نجنا من الشرير. بالمسيح يسوع ربنا، لأن لك الملك والقوة والمجد إلى الأبد. آمين.</p></section>
+</main>
+<button id="top" type="button" aria-label="للأعلى">↑</button>
+<footer>مطرانية شبرا الخيمة وتوابعها • تيم مارمينا والبابا كيرلس • مركز تدريب خدام الشباب</footer>
+<script>
+const verses=[
+["الرَّبُّ رَاعِيَّ فَلَا يُعْوِزُنِي شَيْءٌ.","مزمور 23: 1"],
+["أَسْتَوْدِعُ رُوحِي فِي يَدَيْكَ.","مزمور 31: 5"],
+["سَلَامًا أَنَا أَتْرُكُ لَكُمْ، سَلَامِي أُعْطِيكُمْ.","يوحنا 14: 27"],
+["كُلُّ شَيْءٍ مُسْتَطَاعٌ لِلْمُؤْمِنِ.","مرقس 9: 23"],
+["الرَّبُّ نُورِي وَخَلَاصِي، مِمَّنْ أَخَافُ؟","مزمور 27: 1"],
+["لاَ تَخَفْ لأَنِّي مَعَكَ.","إشعياء 41: 10"],
+["تَعَالَوْا إِلَيَّ يَا جَمِيعَ الْمُتْعَبِينَ وَالثَّقِيلِي الأَحْمَالِ وَأَنَا أُرِيحُكُمْ.","متى 11: 28"],
+["مَحَبَّةٌ أَبَدِيَّةً أَحْبَبْتُكِ.","إرميا 31: 3"],
+["فَوِّضْ إِلَى الرَّبِّ طَرِيقَكَ وَاتَّكِلْ عَلَيْهِ.","مزمور 37: 5"],
+["اَللَّهُ مَحَبَّةٌ.","يوحنا الأولى 4: 8"]
+];
+function updateVerse(){
+  const d=new Date();
+  const day=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
+  const v=verses[day%verses.length];
+  document.getElementById('verseText').textContent=v[0];
+  document.getElementById('verseRef').textContent=v[1];
+}
+updateVerse();
+function copyText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText){return navigator.clipboard.writeText(t)}
+  return new Promise(function(ok,no){try{var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();a.setSelectionRange(0,99999);var r=document.execCommand('copy');a.remove();r?ok():no()}catch(e){no(e)}});
+}
+document.getElementById('copyVerse').addEventListener('click',function(){
+  var b=this,t=document.getElementById('verseText').textContent+' ('+document.getElementById('verseRef').textContent+')';
+  function say(m){b.textContent=m;clearTimeout(say.h);say.h=setTimeout(function(){b.textContent='نسخ الآية'},1800)}
+  copyText(t).then(function(){say('تم النسخ')},function(){
+    return new Promise(function(ok,no){try{var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var r=document.execCommand('copy');a.remove();r?ok():no()}catch(e){no(e)}}).then(function(){say('تم النسخ')},function(){say('تعذر النسخ')});
+  });
+});
+function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+let fontSize=parseInt(load('fontSize'))||18;
+function applySize(){document.body.style.fontSize=fontSize+'px';store('fontSize',fontSize)}
+if(load('dark')==='1')document.body.classList.add('dark');
+applySize();
+document.getElementById('larger').addEventListener('click',()=>{fontSize=Math.min(28,fontSize+1);applySize()});
+document.getElementById('smaller').addEventListener('click',()=>{fontSize=Math.max(13,fontSize-1);applySize()});
+document.getElementById('darkToggle').addEventListener('click',()=>{document.body.classList.toggle('dark');store('dark',document.body.classList.contains('dark')?'1':'0')});
+const topBtn=document.getElementById('top');
+addEventListener('scroll',()=>topBtn.classList.toggle('show',scrollY>600),{passive:true});
+topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+</script>
+<script>
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0&&!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform())){
+  navigator.serviceWorker.register('./sw.js').catch(function(){});
+}
+</script>
+</body></html>
