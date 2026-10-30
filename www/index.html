@@ -4,12 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#092b61">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="صلاة النوم">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>صلاة الساعة الثانية عشرة | صلاة النوم</title>
 <style>
 :root{--navy:#082b62;--blue:#104a91;--gold:#d7a52b;--cream:#fffaf0;--ink:#17233b;--card:#fff;--line:#ead9aa}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f7f3e8,#eef3fa);color:var(--ink);font-family:"Tahoma","Arial",sans-serif;line-height:2;font-size:18px}
 header{background:var(--navy);color:#fff;text-align:center;padding:22px 16px 28px;border-bottom:6px solid var(--gold)}
-.logo{display:block;width:min(300px,76vw);height:auto;aspect-ratio:1;object-fit:contain;margin:0 auto 12px;border:3px solid var(--gold);border-radius:50%;background:#fff;box-shadow:0 4px 18px #0003}
+.logo{display:block;width:min(300px,76vw);height:auto;aspect-ratio:1;object-fit:contain;margin:0 auto 12px;border:3px solid var(--gold);border-radius:24px;background:#6a7895;box-shadow:0 4px 18px #0003}
 header h1{font-size:clamp(1.35rem,4vw,2.1rem);margin:8px 0;color:#ffdf7a}
 header p{margin:0;color:#f5f0e4}
 .wrap{width:min(1100px,94%);margin:24px auto}
@@ -124,13 +131,12 @@ const verses=[
 ];
 function updateVerse(){
   const d=new Date();
-  if(d.getHours()>=21)d.setDate(d.getDate()+1);
   const day=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
   const v=verses[day%verses.length];
   document.getElementById('verseText').textContent=v[0];
   document.getElementById('verseRef').textContent=v[1];
 }
-updateVerse();setInterval(updateVerse,60000);
+updateVerse();
 function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
 let fontSize=parseInt(load('fontSize'))||18;
@@ -143,5 +149,10 @@ document.getElementById('darkToggle').addEventListener('click',()=>{document.bod
 const topBtn=document.getElementById('top');
 addEventListener('scroll',()=>topBtn.classList.toggle('show',scrollY>600),{passive:true});
 topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+</script>
+<script>
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0&&!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform())){
+  navigator.serviceWorker.register('./sw.js').catch(function(){});
+}
 </script>
 </body></html>
