@@ -1,4 +1,4 @@
-const C = 'night-prayer-v1';
+const C = 'night-prayer-v2';
 const FILES = ['./', './index.html', './logo.png', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
